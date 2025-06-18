@@ -306,7 +306,7 @@ class XFeat(nn.Module):
 	def subpix_softmax2d(self, heatmaps, temp = 3):
 		N, H, W = heatmaps.shape
 		heatmaps = torch.softmax(temp * heatmaps.view(-1, H*W), -1).view(-1, H, W)
-		x, y = torch.meshgrid(torch.arange(H, device =  heatmaps.device ), torch.arange(W, device =  heatmaps.device ), indexing = 'ij')
+		y, x = torch.meshgrid(torch.arange(H, device =  heatmaps.device ), torch.arange(W, device =  heatmaps.device ), indexing = 'ij')
 		x = x - (W//2)
 		y = y - (H//2)
 
